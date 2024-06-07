@@ -10,7 +10,7 @@ const userSchema = Yup.object().shape({
     .min(3, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required'),
-  number: Yup.string()
+  phone: Yup.string()
     .min(3, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required'),
@@ -19,15 +19,15 @@ const userSchema = Yup.object().shape({
 export default function ContactForm() {
   const dispatch = useDispatch();
 
-  const nameFiealdId = useId();
-  const phoneFiealdId = useId();
+  const nameFieldId = useId();
+  const phoneFieldId = useId();
 
   return (
     <div>
       <Formik
         initialValues={{
           name: '',
-          number: '',
+          phone: '',
         }}
         validationSchema={userSchema}
         onSubmit={(values, actions) => {
@@ -37,12 +37,12 @@ export default function ContactForm() {
       >
         <Form className={css.contactForm} autoComplete="off">
           <div className={css.formBox}>
-            <label htmlFor={nameFiealdId}>Name</label>
+            <label htmlFor={nameFieldId}>Name</label>
             <Field
               className={css.fieldBox}
               type="text"
               name="name"
-              id={nameFiealdId}
+              id={nameFieldId}
             />
             <ErrorMessage
               name="name"
@@ -51,15 +51,15 @@ export default function ContactForm() {
             />
           </div>
           <div className={css.formBox}>
-            <label htmlFor={phoneFiealdId}>Phone</label>
+            <label htmlFor={phoneFieldId}>Phone</label>
             <Field
               className={css.fieldBox}
               type="text"
-              name="number"
-              id={phoneFiealdId}
+              name="phone"
+              id={phoneFieldId}
             />
             <ErrorMessage
-              name="number"
+              name="phone"
               component="span"
               className={css.errorMsgForm}
             />
